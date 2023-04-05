@@ -11,8 +11,8 @@ public class App {
         List<char[]> charSetList = new ArrayList<>(List.of(charSetArr));
         List<char[]> wordList = new ArrayList<>(List.of(wordArr));
 
-        for (char[] ch : charSetList) {
-            if (wordList.contains(ch)) {
+        for (char[] ch : wordList) {
+            if (charSetList.contains(ch)) {
                 wordList.remove(ch);
             } else {
                 return false;
