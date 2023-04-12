@@ -9,11 +9,11 @@ public class App {
     public static Map<String, Integer> getWordCount(String sentence) {
         String[] words = sentence.split(" ");
         Map<String, Integer> wordCount = new HashMap<>();
-        if (sentence.isEmpty()) {
-            wordCount = Collections. emptyMap();
-        }
+
         for (String word : words) {
-            if (!wordCount.containsKey(word)) {
+            if (sentence.isEmpty()) {
+                wordCount.putAll(Collections.emptyMap());
+            } else if (!wordCount.containsKey(word)) {
                 wordCount.put(word, 0);
             }
             wordCount.put(word, wordCount.get(word) + 1);
@@ -22,10 +22,9 @@ public class App {
     }
 
     public static String toString(Map<String, Integer> wordCount) {
-        var result = "";
-        for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
-            result += "\n" + "  " + entry.getKey().toString() + ": " + entry.getValue().toString();
-        }
+        StringBuilder result = new StringBuilder();
+        for (Map.Entry<String, Integer> entry : wordCount.entrySet())
+            result.append("\n" + "  ").append(entry.getKey()).append(": ").append(entry.getValue().toString());
         return "{" + result + "\n}";
     }
 }
