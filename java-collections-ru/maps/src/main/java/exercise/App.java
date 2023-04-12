@@ -1,6 +1,5 @@
 package exercise;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +11,7 @@ public class App {
 
         for (String word : words) {
             if (sentence.isEmpty()) {
-                wordCount.putAll(Collections.emptyMap());
+                return new HashMap<>();
             } else if (!wordCount.containsKey(word)) {
                 wordCount.put(word, 0);
             }
@@ -22,6 +21,10 @@ public class App {
     }
 
     public static String toString(Map<String, Integer> wordCount) {
+        if (wordCount.isEmpty()) {
+            return "{}";
+        }
+
         StringBuilder result = new StringBuilder();
         for (Map.Entry<String, Integer> entry : wordCount.entrySet())
             result.append("\n" + "  ").append(entry.getKey()).append(": ").append(entry.getValue().toString());
